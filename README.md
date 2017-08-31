@@ -1,4 +1,4 @@
-# FFmpet Puppet Module
+# FFmpeg Puppet Module
 
 #### Table of Contents
 
