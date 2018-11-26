@@ -30,10 +30,7 @@ class ffmpeg::params {
         'Amazon': {
           $nux_repo = 'https://li.nux.ro/download/nux/dextop/el7/x86_64/'
 	        $nux_rpm = 'nux-dextop-release-0-5.el7.nux.noarch.rpm'
-        }
-
-	      $nux_package_name = 'nux-dextop-release-0-5.el7.nux.noarch'
-        
+        }        
         default: {
           fail("Unsupported platform: ${module_name} currently doesn't support ${::operatingsystem}")
         }
@@ -45,6 +42,7 @@ class ffmpeg::params {
   }
   # </ OS family handling>
 
+  $nux_package_name = 'nux-dextop-release-0-5.el7.nux.noarch'
   $package_ensure ='present'
   $include_devel  = false
 }
