@@ -20,10 +20,12 @@ class ffmpeg (
         source => 'http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro',
       }
 
-      package { 'package':
+      $full_rpm_path = "${ffmpeg::params::nux_repo}${ffmpeg::params::nux_rpm}"
+
+      package { $ffmpeg::params::nux_rpm:
         provider	=> 'rpm',
         ensure		=> installed,
-        source		=> $ffmpeg::params::nux_repo_rpm
+        source		=> $full_rpm_path,
       }
     }
     default: {}
