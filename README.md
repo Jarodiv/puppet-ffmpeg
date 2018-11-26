@@ -33,7 +33,7 @@ You can use the module [stahnma-epel](https://forge.puppetlabs.com/stahnma/epel)
 
 Add the following snippet to your `Puppetfile`.
 ```
-mod 'jarodiv-ffmpeg’
+mod 'jarodiv-ffmpeg'
   :git => https://github.com/jarodiv/puppet-ffmpeg.git
 ```
 

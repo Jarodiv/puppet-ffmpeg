@@ -19,7 +19,7 @@ class ffmpeg::params {
             # RHEL 6 family
             '7': {
               $nux_repo = 'https://li.nux.ro/download/nux/dextop/el7/x86_64/'
-	       $nux_repo_rpm = 'http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm'
+	            $nux_rpm = 'nux-dextop-release-0-5.el7.nux.noarch.rpm'
             }
             default: {
               fail("Unsupported platform: ${module_name} currently doesn't support ${::operatingsystem} ${::operatingsystemmajrelease}")
@@ -29,7 +29,7 @@ class ffmpeg::params {
         # Amazon Linux
         'Amazon': {
           $nux_repo = 'https://li.nux.ro/download/nux/dextop/el7/x86_64/'
-	   $nux_repo_rpm = 'http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm'
+	        $nux_rpm = 'nux-dextop-release-0-5.el7.nux.noarch.rpm'
         }
         default: {
           fail("Unsupported platform: ${module_name} currently doesn't support ${::operatingsystem}")
