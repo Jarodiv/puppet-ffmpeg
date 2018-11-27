@@ -22,7 +22,7 @@ class ffmpeg (
 
       $full_rpm_path = "${ffmpeg::params::nux_repo}${ffmpeg::params::nux_rpm}"
 
-      package { $ffmpeg::params::nux_rpm:
+      package { $ffmpeg::params::nux_package_name:
         provider	=> 'rpm',
         ensure		=> installed,
         source		=> $full_rpm_path,
