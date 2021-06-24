@@ -13,7 +13,7 @@
       "version_requirement": ">=4.6.0"
     },
     {
-      "name": "stahnma/epel",
+      "name": "puppet/epel",
       "version_requirement": ">=2.0.0"
     }
   ],

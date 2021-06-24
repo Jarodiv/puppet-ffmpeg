@@ -27,7 +27,7 @@ This module provides the ability to manage the installation of FFmpeg using pupp
 ### Requirements
 
 * [puppetlabs-stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib)
-* [stahnma-epel](https://forge.puppetlabs.com/stahnma/epel)
+* [puppet-epel](https://forge.puppetlabs.com/stahnma/epel)
 
 ### Getting Started
 
