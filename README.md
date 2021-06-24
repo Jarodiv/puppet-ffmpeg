@@ -2,34 +2,36 @@
 
 #### Table of Contents
 
-1. [Module Description](#description)
-2. [Setup](#setup)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with ffmpeg](#beginning-with-ffmpeg)
-3. [Usage](#usage)
-4. [Reference](#reference)
-4. [Limitations](#limitations)
-5. [Development](#development)
+- [FFmpeg Puppet Module](#ffmpeg-puppet-module)
+      - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Setup](#setup)
+    - [Requirements](#requirements)
+    - [Getting Started](#getting-started)
+      - [r10k / librarian-puppet](#r10k--librarian-puppet)
+  - [Usage](#usage)
+  - [Reference](#reference)
+    - [Classes](#classes)
+      - [Public Classes](#public-classes)
+        - [Class: `ffmpeg`](#class-ffmpeg)
+  - [Limitations](#limitations)
+  - [Development](#development)
 
 ## Description
 
 FFmpeg is a free software project that produces libraries and programs for handling multimedia data.
 This module provides the ability to manage the installation of FFmpeg using puppet.
 
-Currently only supports RetHat, CentOS and Amazon Linux.
-
 ## Setup
 
-### Setup Requirements
+### Requirements
 
-**WARNING:** For RedHat systems, you may need to add an additional repository like the [EPEL repository](http://fedoraproject.org/wiki/EPEL).
-You can use the module [stahnma-epel](https://forge.puppetlabs.com/stahnma/epel) to do this.
+* [puppetlabs-stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib)
+* [stahnma-epel](https://forge.puppetlabs.com/stahnma/epel)
 
-* The [stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib) Puppet library.
+### Getting Started
 
-### Beginning with ffmpeg
-
-#### librarian-puppet
+#### r10k / librarian-puppet
 
 Add the following snippet to your `Puppetfile`.
 ```
@@ -39,10 +41,10 @@ mod 'jarodiv-ffmpeg'
 
 ## Usage
 
-Simply include the main class to get started with the default options:
+Include the main class to get started with the default options:
 
 ```puppet
-include '::ffmpeg'
+include 'ffmpeg'
 ```
 
 If you want to additionally install the development libraries:
@@ -53,7 +55,7 @@ class { 'ffmpeg':
 }
 ```
 
-This module also supports Hiera. Just include the ffmpeg class and configure it like this;
+This module also supports Hiera:
 
 ```yaml
 ffmpeg::include_devel: true
@@ -65,25 +67,16 @@ ffmpeg::include_devel: true
 
 #### Public Classes
 
-* `ffmpeg`: Manages the installation of FFmpeg
+##### Class: `ffmpeg`
 
-#### Class: `ffmpeg`
+Manages the installation of FFmpeg.
 
-#### `package_ensure`
-
-Passed directly on to Puppet's `package` type `ensure` parameter.
-
-Default: `present`.
-
-#### `include_devel`
-
-Whether to include development libraries.
-
-Default: `false`
+`include_devel`
+Optional: Whether the Development package for ffmpeg or not. Default: `false`
 
 ## Limitations
 
-This module currently only supports RetHat, CentOS and Amazon Linux.
+This module currently only supports CentOS 7 and 8.
 
 ## Development
 

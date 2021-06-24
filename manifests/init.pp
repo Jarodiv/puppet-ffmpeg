@@ -1,44 +1,54 @@
+# This module installs FFmpeg
+#
+# @param include_devel
+#     Whether the Development package for ffmpeg or not.
 class ffmpeg (
-  $package_ensure = $ffmpeg::params::package_ensure,
-  $include_devel    = $ffmpeg::params::include_devel,
-) inherits ffmpeg::params {
-
-  #Validate params
-  validate_string($package_ensure)
-  validate_bool($include_devel)
-
-
+  Boolean $include_devel = lookup('ffmpeg::include_devel'),
+) {
   # <OS family handling>
-  case $::osfamily {
-    'RedHat': {
-      # TODO: support 'ensure => absent'
-      file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-nux.ro':
-        ensure => present,
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0644',
-        source => 'http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro',
-      }
+  case $facts['os']['name'] {
+    'CentOS': {
+      case $facts['os']['release']['major'] {
+        '7', '8': {
+          include epel
 
-      $full_rpm_path = "${ffmpeg::params::nux_repo}${ffmpeg::params::nux_rpm}"
+          # See: https://linuxize.com/post/how-to-install-ffmpeg-on-centos-8/
+          yumrepo { 'epel-multimedia':
+            ensure              => present,
+            baseurl             => 'https://negativo17.org/repos/multimedia/epel-$releasever/$basearch/',
+            descr               => 'negativo17 - Multimedia',
+            enabled             => 1,
+            gpgkey              => 'https://negativo17.org/repos/RPM-GPG-KEY-slaanesh',
+            gpgcheck            => 1,
+            repo_gpgcheck       => 0,
+            skip_if_unavailable => 1,
+          }
 
-      package { $ffmpeg::params::nux_package_name:
-        provider	=> 'rpm',
-        ensure		=> installed,
-        source		=> $full_rpm_path,
+          # The available ffmpeg version is dynamically linked against libSDL which is provided by the package 'SDL2' from this repo
+          if ($facts['os']['release']['major'] == '8') {
+            $install_options = [ '--enablerepo', 'powertools' ]
+          }
+        }
+        default: {
+          fail("Unsupported platform: ${module_name} currently doesn't support ${facts['os']['name']} ${facts['os']['release']['major']}")
+        }
       }
     }
-    default: {}
+    default: {
+      fail("Unsupported platform: ${module_name} currently doesn't support ${facts['os']['name']}")
+    }
   }
   # </ OS family handling>
 
-  package{ $ffmpeg::params::base_package:
-    ensure => $package_ensure,
+  # `.then | $x | { ... }` accesses the arrays only if they exist
+  package{ lookup('ffmpeg::base_package', { value_type => String }):
+    install_options => $install_options.then | $x | { $x },
   }
 
-  if ($include_devel == true){
-    package{ $ffmpeg::params::devel_package:
-      ensure => $package_ensure,
+  # `.then | $x | { ... }` accesses the arrays only if they exist
+  if ($include_devel == true) {
+    package{ lookup('ffmpeg::devel_package', { value_type => String }):
+      install_options => $install_options.then | $x | { $x },
     }
   }
 }

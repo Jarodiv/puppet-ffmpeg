@@ -1,0 +1,7 @@
+---
+
+# The name of the FFmpeg package
+ffmpeg::base_package: 'ffmpeg'
+
+# The name of the FFmpeg development package
+ffmpeg::devel_package: 'ffmpeg-devel'

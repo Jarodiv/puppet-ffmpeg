@@ -1,0 +1,4 @@
+---
+
+# Whether the Development package for ffmpeg or not
+ffmpeg::include_devel: false

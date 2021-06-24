@@ -1,45 +1,34 @@
 {
   "name": "jarodiv-ffmpeg",
-  "version": "0.9.0",
+  "version": "0.9.9",
   "author": "Michael Strache (michael.strache@netcentric.biz)",
   "license": "Apache-2.0",
-  "description": "Module for FFmpeg installation",
-  "summary": "Install FFmpeg",
+  "summary": "Installs FFmpeg",
   "source": "https://github.com/Jarodiv/puppet-ffmpeg",
   "project_page": "https://github.com/Jarodiv/puppet-ffmpeg",
   "issues_url": "https://github.com/Jarodiv/puppet-ffmpeg/issues",
-  "data_provider": "hiera",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">=4.6.0 < 5.0.0"
+      "version_requirement": ">=4.6.0"
+    },
+    {
+      "name": "stahnma/epel",
+      "version_requirement": ">=2.0.0"
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.7.0 < 6.0.0"
+      "version_requirement": ">= 4.7.0"
     }
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "Amazon",
-      "operatingsystemrelease": [
-        "2017"
-      ]
-    },
-    {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
-    },
-    {
-      "operatingsystem": "RedHat",
-      "operatingsystemrelease": [
-        "6",
-        "7"
+        "7",
+        "8"
       ]
     }
   ],
