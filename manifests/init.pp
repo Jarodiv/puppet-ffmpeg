@@ -22,18 +22,11 @@ class ffmpeg (
     'CentOS': {
       case $facts['os']['release']['major'] {
         '7', '8': {
+          # See: https://linuxhint.com/install-use-ffmpeg-in-centos8/
           include epel
 
-          # See: https://linuxize.com/post/how-to-install-ffmpeg-on-centos-8/
-          yumrepo { 'epel-multimedia':
-            ensure              => present,
-            baseurl             => 'https://negativo17.org/repos/multimedia/epel-$releasever/$basearch/',
-            descr               => 'negativo17 - Multimedia',
-            enabled             => 1,
-            gpgkey              => 'https://negativo17.org/repos/RPM-GPG-KEY-slaanesh',
-            gpgcheck            => 1,
-            repo_gpgcheck       => 0,
-            skip_if_unavailable => 1,
+          package{ 'rpmfusion-free':
+            source => "https://download1.rpmfusion.org/free/el/rpmfusion-free-release-${facts['os']['release']['major']}.noarch.rpm",
           }
 
           # The available ffmpeg version is dynamically linked against libSDL which is provided by the package 'SDL2' from this repo
