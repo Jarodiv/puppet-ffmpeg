@@ -1,6 +1,6 @@
 {
   "name": "jarodiv-ffmpeg",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "Michael Strache (michael.strache@netcentric.biz)",
   "summary": "Installs FFmpeg",
   "license": "Apache-2.0",

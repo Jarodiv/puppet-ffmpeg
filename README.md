@@ -1,9 +1,6 @@
 # FFmpeg Puppet Module
 
-#### Table of Contents
-
 - [FFmpeg Puppet Module](#ffmpeg-puppet-module)
-      - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Setup](#setup)
     - [Requirements](#requirements)
