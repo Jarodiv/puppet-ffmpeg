@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.1.2
+
+**Bugfixes**
+- Fix readme ToC
+
 ## Release 1.1.1
 
 **Bugfixes**
