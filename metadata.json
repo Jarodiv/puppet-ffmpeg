@@ -1,6 +1,6 @@
 {
   "name": "jarodiv-ffmpeg",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "author": "Michael Strache (michael.strache@netcentric.biz)",
   "summary": "Installs FFmpeg",
   "license": "Apache-2.0",
@@ -10,15 +10,15 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">=4.6.0"
+      "version_requirement": ">=4.6.0 < 8.0.0"
     },
     {
       "name": "puppetlabs/yumrepo_core",
-      "version_requirement": ">=1.0.0"
+      "version_requirement": ">=1.0.0 < 2.0.0"
     },
     {
       "name": "puppet/epel",
-      "version_requirement": ">=2.0.0"
+      "version_requirement": ">=2.0.0 < 4.0.0"
     }
   ],
   "operatingsystem_support": [
